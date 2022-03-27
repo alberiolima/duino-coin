@@ -60,7 +60,7 @@ void loop() {
   
   /* Consulta escravo */
   if ( i2c_escravos[posicaoCosulta] != 0 ) {
-    if ( Wire.requestFrom(1, 1) > 0 ) {
+    if ( Wire.requestFrom(i2c_escravos[posicaoCosulta], 1) > 0 ) {
       char c = Wire.read();
       if ( c != '\n' ) { 
         String tx_buffer = "$I2C,"+String(i2c_escravos[posicaoCosulta])+","+c;
