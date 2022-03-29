@@ -1,0 +1,66 @@
+>> Teste com dois escravos conectados na ponte
+
+Minerador duinocoin
+Lua:	Lua 5.1
+
+Conectando ao servidor
+IP:	51.159.175.20
+porta:	6042
+cliente:	1
+Versão:	3.0
+[1] GOOD share #1 (367) hashate: 0.175 kH/s (2.088s)
+
+Conectando ao servidor
+IP:	51.159.175.20
+porta:	6042
+cliente:	2
+Versão:	3.0
+[2] GOOD share #2 (56) hashate: 0.192 kH/s (0.292s)
+[1] GOOD share #3 (108) hashate: 0.176 kH/s (0.613s)
+[1] GOOD share #4 (72) hashate: 0.174 kH/s (0.413s)
+[2] GOOD share #5 (516) hashate: 0.194 kH/s (2.659s)
+[1] GOOD share #6 (499) hashate: 0.176 kH/s (2.829s)
+[2] GOOD share #7 (283) hashate: 0.194 kH/s (1.458s)
+[1] GOOD share #8 (341) hashate: 0.176 kH/s (1.932s)
+[2] GOOD share #9 (564) hashate: 0.194 kH/s (2.902s)
+[1] GOOD share #10 (226) hashate: 0.175 kH/s (1.284s)
+[1] GOOD share #11 (12) hashate: 0.162 kH/s (0.074s)
+[2] GOOD share #12 (369) hashate: 0.193 kH/s (1.904s)
+[2] GOOD share #13 (133) hashate: 0.193 kH/s (0.689s)
+[1] GOOD share #14 (596) hashate: 0.177 kH/s (3.366s)
+[2] GOOD share #15 (333) hashate: 0.193 kH/s (1.718s)
+[1] GOOD share #16 (262) hashate: 0.176 kH/s (1.482s)
+[2] GOOD share #17 (343) hashate: 0.193 kH/s (1.770s)
+[1] GOOD share #18 (136) hashate: 0.176 kH/s (0.772s)
+[1] GOOD share #19 (181) hashate: 0.176 kH/s (1.026s)
+[2] GOOD share #20 (426) hashate: 0.193 kH/s (2.201s)
+[1] GOOD share #21 (77) hashate: 0.175 kH/s (0.439s)
+[2] GOOD share #22 (88) hashate: 0.191 kH/s (0.459s)
+[2] GOOD share #23 (117) hashate: 0.192 kH/s (0.609s)
+[1] GOOD share #24 (350) hashate: 0.177 kH/s (1.967s)
+[2] GOOD share #25 (272) hashate: 0.192 kH/s (1.410s)
+[1] GOOD share #26 (170) hashate: 0.176 kH/s (0.961s)
+[2] GOOD share #27 (239) hashate: 0.192 kH/s (1.242s)
+[1] GOOD share #28 (440) hashate: 0.177 kH/s (2.472s)
+[1] GOOD share #29 (52) hashate: 0.174 kH/s (0.298s)
+[2] GOOD share #30 (494) hashate: 0.192 kH/s (2.562s)
+[1] GOOD share #31 (190) hashate: 0.177 kH/s (1.068s)
+[2] GOOD share #32 (359) hashate: 0.192 kH/s (1.863s)
+[1] GOOD share #33 (428) hashate: 0.177 kH/s (2.405s)
+[2] GOOD share #34 (308) hashate: 0.192 kH/s (1.599s)
+[2] GOOD share #35 (11) hashate: 0.175 kH/s (0.063s)
+[1] GOOD share #36 (261) hashate: 0.178 kH/s (1.464s)
+[2] GOOD share #37 (380) hashate: 0.192 kH/s (1.972s)
+[1] GOOD share #38 (356) hashate: 0.177 kH/s (2.001s)
+[1] GOOD share #39 (134) hashate: 0.176 kH/s (0.757s)
+[2] GOOD share #40 (511) hashate: 0.192 kH/s (2.650s)
+[1] GOOD share #41 (519) hashate: 0.177 kH/s (2.916s)
+[1] GOOD share #42 (54) hashate: 0.174 kH/s (0.309s)
+[2] GOOD share #43 (578) hashate: 0.192 kH/s (2.997s)
+[1] GOOD share #44 (533) hashate: 0.177 kH/s (2.995s)
+[2] GOOD share #45 (593) hashate: 0.192 kH/s (3.075s)
+[2] GOOD share #46 (134) hashate: 0.191 kH/s (0.698s)
+[1] GOOD share #47 (594) hashate: 0.178 kH/s (3.334s)
+[2] GOOD share #48 (464) hashate: 0.192 kH/s (2.407s)
+[2] GOOD share #49 (239) hashate: 0.192 kH/s (1.242s)
+

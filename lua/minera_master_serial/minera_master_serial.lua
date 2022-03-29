@@ -23,7 +23,7 @@ local duino_coin_rig_id = "None"
 local duino_coin_miner_key = "None"
 
 -- Inicia variáveis publicas 
-maximo_clientes = 1
+maximo_clientes = 2
 host, port = "51.158.113.59", 14166
 share_count = 0;
 pck_request_jog = "JOB,"..duino_coin_user..","..duino_coin_diff..","..duino_coin_miner_key.."\n"
@@ -71,6 +71,7 @@ out:write(string.format("OK, port open with values '%s'\n", tostring(p)))
 local conexoes = {}
 local status_conexoes = {}
 local operacao = {}
+tempo_visto = {}
 local n_cliente = 1;
 local n_clientes_ativos = 1 -- maximo_clientes
 local serial_buffer = ""
@@ -79,6 +80,7 @@ print("Lua:",_VERSION)
 --delay
 local t_final = os.clock() + 3
 while os.clock() < t_final do end
+tempo_visto[n_cliente] = os.clock()
 while true do
   if status_conexoes[n_cliente] == nil then
     operacao[n_cliente] = 0 -- sem conexão
@@ -87,12 +89,13 @@ while true do
     print("Conectando ao servidor")
     print("IP:", host)
     print("porta:", port)
+    print("cliente:",n_cliente);
     conexoes[n_cliente] = socket.tcp()
     conexoes[n_cliente]:settimeout(2)
-    status_conexoes[n_cliente] = conexoes[n_cliente]:connect(host, port)
-    print("conectado:",status_conexoes[n_cliente])
+    status_conexoes[n_cliente] = conexoes[n_cliente]:connect(host, port)    
     if status_conexoes[n_cliente] ~= nil then
       operacao[n_cliente] = 1 -- solicitar job 
+      tempo_visto[n_cliente] = os.clock()
       --recebe versão do servidor
       local s, err = conexoes[n_cliente]:receive(3)
       if s ~= nil then
@@ -114,10 +117,11 @@ while true do
     err, len_written = p:write(job)
     assert(e == rs232.RS232_ERR_NOERROR)
     operacao[n_cliente] = 2 -- esperando escravo
+    tempo_visto[n_cliente] = os.clock()
   end
   
   -- recebe dados da serial
-  err, data_read, size = p:read(1,5000)
+  err, data_read, size = p:read(1,1)
   if size > 0 then
     serial_buffer = serial_buffer..data_read
     -- processa pacote recebido
@@ -143,10 +147,16 @@ while true do
         local s,err = conexoes[id_cliente]:receive()
         if s == "GOOD" then
           share_count = share_count + 1
+          
+          --incrementa clientes ativos
+          if n_clientes_ativos < maximo_clientes then
+            n_clientes_ativos = n_clientes_ativos + 1
+            tempo_visto[n_clientes_ativos] = os.clock() 
+          end
         end
       
         -- debug 
-        local mens_debug = s
+        local mens_debug = "["..tostring(id_cliente).."] "..s
         mens_debug = mens_debug.." share #"..tostring(share_count)
         mens_debug = mens_debug.." ("..tostring(duco_result)..") hashate: "
         mens_debug = mens_debug..string.format("%.3f", hashrate/1000).." kH/s ("
@@ -155,7 +165,24 @@ while true do
         operacao[id_cliente] = 1 -- solicitar job 
       end
     end
+  end
+  
+  --cancela o trabalho enviado anteriormente e solicita proximo
+  --if tempo_visto[n_cliente] ~= nul then
+  --print(os.clock() - tempo_visto[n_cliente])
+  local t = os.clock() - tempo_visto[n_cliente]
+    if ( t > 10) then
+      print("Cancelado",n_cliente)
+      operacao[n_cliente] = 1
+    end  
+  --end
+  
+  -- incrementa para ir para proximo cliente
+  n_cliente = n_cliente + 1
+  if n_cliente > n_clientes_ativos then
+    n_cliente = 1
   end  
+  
 end
 assert(p:close() == rs232.RS232_ERR_NOERROR)
 --tcp:close()
