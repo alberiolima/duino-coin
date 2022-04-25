@@ -601,13 +601,14 @@ void loop() {
   waitForClientData();
   String last_block_hash = getValue(client_buffer, SEP_TOKEN, 0);
   String expected_hash = getValue(client_buffer, SEP_TOKEN, 1);
-  difficulty = getValue(client_buffer, SEP_TOKEN, 2).toInt() * 100 + 1;
+  difficulty = getValue(client_buffer, SEP_TOKEN, 2).toInt();
   
   int job_len = last_block_hash.length() + expected_hash.length() + String(difficulty).length();
-  Serial.println("Received job with size of " + String(job_len) + " bytes");
+  Serial.println("Received job with size of " + String(job_len) + " bytes, difficulty: " + String(difficulty));
   for (uint8_t i = 0, j = 0; j < 20; i += 2, j++) {
     bytes_expected_hash[j] = ((((expected_hash[i] & 0x1F) + 9) % 25) << 4) + ((expected_hash[i + 1] & 0x1F) + 9) % 25;
   }
+  difficulty = (difficulty * 100)+1;
   
   br_sha1_init(&sha1_ctx_base);
   br_sha1_update(&sha1_ctx_base, last_block_hash.c_str(), last_block_hash.length());
