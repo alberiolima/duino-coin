@@ -15,7 +15,7 @@
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
 
-#define MAX_HASHRATE 10000.0f
+#define MAX_HASHRATE 20800.0f
 
 /***************** START OF MINER CONFIGURATION SECTION *****************/
 // Change the part in brackets to your WiFi name
